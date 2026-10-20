@@ -1,0 +1,44 @@
+[project]
+name = "taskflow-api"
+version = "0.1.0"
+description = "TaskFlow - Task Management REST API"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 99
+target-version = "py312"
+src = ["app"]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "W",
+    "I",
+    "N",
+    "UP",
+    "B",
+    "A",
+    "SIM",
+    "TCH",
+]
+ignore = [
+    "B008",  # Do not perform function call `Depends` in argument defaults (standard in FastAPI)
+    "N818",  # Exception name `AppException` should be named with an Error suffix
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
